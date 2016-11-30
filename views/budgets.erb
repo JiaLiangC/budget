@@ -1,0 +1,27 @@
+  <h3>Budget List</h3>
+  <span>
+    <a href="/budgets/new" class="btn btn-primary">New Budgets</a>
+  </span>
+  <br/><br/>
+  <div class="budgets-list">
+    <table class="table">
+      <thead>
+        <tr>
+          <td>Time</td>
+          <td>Budget num</td>
+        </tr>
+      </thead>
+      <tbody>
+        <% @budgets.each do |budget|%>
+          <tr>
+            <td>
+              <span><%= budget[:month]%></span>
+            </td>
+            <td>
+               <span><%= budget[:num]%> $</span>
+            </td>
+          </tr>
+        <%end%>
+      </tbody>
+    </table>
+  </div>

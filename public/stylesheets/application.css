@@ -1,0 +1,103 @@
+@import "bootstrap.min.css";
+@import "datepicker.css";
+@import "font-awesome.min.css";
+
+div.errors{
+color: #E05C44;
+font-size: 20px;
+}
+
+div.message{
+  font-size: 18px;
+  text-align: center;
+}
+.active{
+  background-color: lightgray;
+}
+
+div.time-pick input{
+  width: 200px;
+  height: 30px;
+}
+div.time-pick span{
+  display: inline-block;
+  font-size: 15px;
+  height: 30px;
+  border: 1px solid #BFBFBF;
+  padding: 3px 5px;
+  border-right: none;
+  cursor: pointer;
+}
+.expenses{
+  margin:40px 0;
+}
+.expenses-list{
+  margin:0;
+}
+.expenses-list .expense-item{
+  overflow:hidden;
+}
+.expenses-list .expense-time{
+  color:#BCBCBC;
+}
+.expenses-list .expense-name,.expense-wrap{
+  margin-left:40px;
+}
+.expenses-list .expense-category{
+  text-align: center;
+  border: 2px solid #FF5001;
+  border-radius: 13px;
+  margin-bottom: 3px;
+  font-weight: bold;
+}
+.expenses-list .expense-name{
+  margin-left: 100px;
+}
+.expense-new-form{
+  margin-top:40px;
+  overflow:hidden
+}
+
+.budgets-list{
+  text-align:center;
+}
+.budgets-new{
+  margin-top:40px;
+  overflow:hidden;
+}
+.budgets-new .budget-num{
+  width:300px;
+}
+
+.expense-new-title{
+   margin-left:80px;
+}
+
+.category:after{
+  display: block;
+  content: "";
+  clear: both;
+}
+.category .categories{
+  border: 1px solid lightgray;
+  border-radius:48px;
+  text-align:center;
+  margin: 20px 40px 0 0;
+}
+.categories a{
+  display:block;
+  line-height:47px;
+  text-decoration:none;
+}
+.statistics{
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+.statistics .budget{
+  margin-bottom: 20px;
+}
+.statistics .summary{
+  padding: 5px 10px;
+  border: 2px solid #E78170;
+  border-radius: 4px;
+}

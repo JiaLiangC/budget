@@ -1,0 +1,59 @@
+<div class="row">
+  <div class="col-md-9 col-sm-9 col-sm-offset-2 col-md-offset-2">
+    <div class="category">
+      <h3 class="expense-new-title">Expenses Categories</h3>
+      <% @categories.each do |category|%>
+          <div class="col-md-3 col-sm-3 categories">
+            <a href="#">
+              <%= category%>
+            </a>
+          </div>
+      <%end%>
+    </div>
+    <br>
+    (please choose one category)
+    <div class="expense-new-form">
+      <form action="/expenses" method="post">
+        <div class="form-group">
+          <label>Choose Time</label>
+          <div class="time-pick "  >
+            <span class="pull-left" >
+              <i class="fa fa-calendar"></i>
+            </span>
+            <input name="expense_time" id="datepicker" type="text" readonly value="<%= params[:expense_time] unless @errors[:expense_time] %>" required>
+            <div class="errors"><%=@errors[:expense_time] %></div>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label>EXPENSE:</label>
+          (Please  enter your expense)
+          <input  class="form-control" type="text" name="expense_num" placeholder="enter a  numer $" value="<%= params[:expense_num] unless @errors[:expense_num] %>" required/>
+          <div class="errors"><%= @errors[:expense_num] %></div>
+        </div>
+        <div class="form-group">
+          <label>Remark</label>
+          <input class="form-control" type="text" name="expense_detail"/>
+        </div>
+        <input type="hidden" id="category" name="expense_category" />
+        <button class="btn btn-success">Submit</button>
+      </form>
+    </div>
+
+  </div>
+</div> 
+  
+
+<script type="text/javascript">
+$(document).ready(function(){
+
+  $('#datepicker').datepicker({format: 'yyyy-mm-dd'});
+
+  $("a").click(function(){
+    $("div").removeClass("active");
+    $(this).closest(".col-md-3").addClass("active");
+    var a = $(this).text().replace(/\s/g, "");
+    $("#category").val(a);
+  });
+});
+</script>

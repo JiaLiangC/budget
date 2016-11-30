@@ -1,0 +1,103 @@
+<div class="expenses">
+  <div>
+    <form action="/expenses" method="get">
+      <div class="form-group">
+        <label>Choose Time</label>
+        <div class="time-pick " >
+
+          <span class="pull-left" >
+            <i class="fa fa-calendar"></i>
+          </span>
+
+          <input name="expense_time" id="datepicker" type="text" readonly value="<%= params[:by_year] == "true" ? params[:expense_time].split("-")[0] : params[:expense_time]%>">
+
+          <input type="hidden" id="by_year" name="by_year"/>
+
+          <button type="submit" class="btn btn-primary">Query by month</button>
+
+          <button id="year" type="submit" class="btn btn-primary">Query by year</button>
+        </div>
+
+      </div>
+    </form>
+  </div>
+
+  
+  
+  <div class="statistics">
+    <%if @budget%>
+      <div class="budget">
+        <label>Budget:  </label>
+        <br>
+        <div>Num: <%= @budget[:num]%>$</div>
+        <div>Time: <%= @budget[:month]%></div>
+      </div>
+    <%end%>
+
+    <div>
+      <label>Total: </label>
+      <span><%=@total%>$</span>
+      <ul>
+        <%@by_categories.each do |k, v|%>
+          <li>
+            <label><%=k%> <%=v%>$</label>
+          </li>
+        <%end%>
+      </ul>
+    </div>
+    
+    <%if @res%>
+      <div class="summary">
+        <%= @res > 0 ? "You still have #{ @res}$ of the budget." : 
+        "your cost is #{@res.abs}$ over the budget."%>
+      </div>
+    <%end%>
+  </div>
+
+  <div>
+    <%@expenses.each do |expense|%>
+      <ul class="list-group expenses-list">
+        <li class="list-group-item">
+          <div class="expense-item">
+
+            <div class="pull-left" >
+              <i class="fa fa-tag fa-2x"></i>
+            </div>
+
+            <div class="pull-left expense-wrap">
+              <div class="expense-category">
+                <%= expense[:category].empty? ? "others" : expense[:category]%> 
+              </div>
+              <div class="expense-time"><%=expense[:time]%></div>
+            </div>
+
+            <div class="pull-left expense-name">
+              <%=expense[:name]%>
+            </div>
+
+            <div class="pull-right">
+              <%= expense[:num] %>$
+            </div>
+          </div>
+        </li>
+      </ul>
+    <%end%>
+  </div>
+  
+</div>
+
+<script type="text/javascript">
+$(function(){
+  $('#datepicker').datepicker({
+    viewMode: 'years',
+    format: 'yyyy-mm',
+    minViewMode: "months"
+  });
+
+  $("#year").click(function(){
+    event.preventDefault();
+    $("#by_year").val(true);
+    $("form").submit();
+  });
+});
+</script>

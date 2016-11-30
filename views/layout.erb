@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+
+    <link rel="stylesheet" type="text/css" href="/stylesheets/application.css">
+    <script type='text/javascript' src="/javascripts/jquery-3.1.1.min.js"></script>
+    <script type='text/javascript' src="/javascripts/bootstrap.min.js"></script>
+    <script type='text/javascript' src="/javascripts/bootstrap-datepicker.js"></script>
+    
+  </head>
+
+  <body>  
+    <main>
+    <%if session[:message]%>
+      <div class="message alert-success">
+        <%= session.delete(:message)%>
+      </div>
+    <%end%>
+
+      <div class="nav navbar-default">
+        <ul class="nav navbar-nav">
+          <li><a href="/expenses">Expense Details</a></li>
+          <li><a href="/expenses/new">New Expense</a></li>
+          <li><a href="/budgets">Budgets</a></li>
+        </ul>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1">
+            <%= yield %>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
